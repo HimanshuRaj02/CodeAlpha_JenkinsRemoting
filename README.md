@@ -28,13 +28,15 @@ The Jenkins controller and both agents run as Docker containers on the same host
 - ARM64 container emulation returned `aarch64`.
 - Java 21 ran successfully in an ARM64 container.
 
-## Security Notes
-The controller is connected to both `jenkins-remoting-net` and the default Docker bridge network. The controller's bridge IP was reachable from Agent 1. Dedicated network membership was verified, but strict network isolation has not been proven.
-
-The ARM64 tests verified container emulation and Java runtime execution only. A Jenkins job executed successfully on the ARM64 agent, reporting aarch64 and Java 21.
+## Validation and Limitations
+- Three Jenkins agent containers were running: two Linux agents and one ARM64 agent.
+- Jenkins remote execution succeeded on the Linux agents and ARM64 agent.
+- The ARM64 job reported `aarch64` and Java 21.
+- Build distribution was tested across the two Linux agents.
+- Agents were attached to the dedicated Docker network `jenkins-remoting-net`.
+- The ARM64 agent reached the controller on the Remoting port 50000. Its tested connection to the controller's default-bridge IP on port 8080 was blocked.
+- Strict network isolation has not been fully proven.
+- All agent containers run on the same host; execution across separate physical machines has not been tested.
 
 ## Evidence
-Screenshots are stored in the `evidence/` directory.
-
-## Project Status
-This project is still in progress. Further tests, repeatable scripts, and final validation are pending.
+Screenshots are available in the `evidence/` directory, including `security-connectivity-test.png` for Remoting and bridge connectivity tests. Verification scripts are available in `scripts/`.
