@@ -1,0 +1,5 @@
+agent.jar
+*.secret
+.env
+.env.*
+secrets/
