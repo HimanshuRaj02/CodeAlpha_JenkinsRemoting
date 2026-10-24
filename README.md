@@ -1,8 +1,5 @@
 # Jenkins Remoting Project | CodeAlpha
 
-**Author:** Himanshu Raj  
-**Bio:** Himanshu Raj
-
 A hands-on DevOps project demonstrating Jenkins Remoting, distributed builds, Linux agents, ARM64 remote execution, and network connectivity testing using Docker.
 
 ## Project Overview
@@ -48,13 +45,13 @@ The following diagram illustrates the project architecture and tested setup.
 
 ## Evidence
 
+### Jenkins Dashboard — Successful Jobs and Agents
+
+![Jenkins Dashboard Success](evidence/jenkins-dashboard-success.png)
+
 ### ARM64 Remote Build
 
 ![ARM64 Remote Build Success](evidence/arm64-remote-build-success.png)
-
-### Linux Agent Load Distribution
-
-![Build running on Linux Agent 2](evidence/build-5-linux-agent-2.jpg)
 
 ## Verification Scripts
 
@@ -90,6 +87,12 @@ All controller and agent containers currently run on the same physical host. A s
 ## Project Status
 
 The local Docker-based Jenkins Remoting setup, Linux load-distribution test, ARM64 build, and documented connectivity tests have been completed. Further remote-machine and security-isolation validation remains subject to review of the task requirements.
+
+---
+
+**Author:** Himanshu Raj  
+**Program:** CodeAlpha DevOps Internship  
+**Project:** Jenkins Remoting
 
 ---
 
