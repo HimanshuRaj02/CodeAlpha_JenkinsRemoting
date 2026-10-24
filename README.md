@@ -90,10 +90,6 @@ The local Docker-based Jenkins Remoting setup, Linux load-distribution test, ARM
 
 ---
 
-**Author:** Himanshu Raj  
-**Program:** CodeAlpha DevOps Internship  
-**Project:** Jenkins Remoting
-
 ---
 
 **Author:** Himanshu Raj  
