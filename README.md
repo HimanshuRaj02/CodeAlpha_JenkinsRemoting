@@ -23,7 +23,6 @@ The following diagram illustrates the project architecture and tested setup.
 
 ![Jenkins Remoting Architecture](docs/architecture.png)
 
-[Open Architecture Diagram](docs/architecture.png)
 
 **Environment note:** The controller and agents in this implementation run as Docker containers on the same physical host. A separate physical machine or cloud VM has not yet been verified.
 
@@ -49,18 +48,13 @@ The following diagram illustrates the project architecture and tested setup.
 
 ## Evidence
 
-### Jenkins Nodes and Connectivity
+### ARM64 Remote Build
 
-- [Jenkins Nodes Online](evidence/jenkins-nodes-online.png)
-- [Jenkins Remoting Network](evidence/jenkins-remoting-network.png)
-- [Remote Execution Success](evidence/remote-execution-success.png)
-- [Security Connectivity Test](evidence/security-connectivity-test.png)
+![ARM64 Remote Build Success](evidence/arm64-remote-build-success.png)
 
-### Build Evidence
+### Linux Agent Load Distribution
 
-- [ARM64 Remote Build Success](evidence/arm64-remote-build-success.png)
-- [Build #5 — Linux Agent 2](evidence/build-5-linux-agent-2.jpg)
-- [Build #6 — Linux Agent 1](evidence/build-6-linux-agent-1.jpg)
+![Build running on Linux Agent 2](evidence/build-5-linux-agent-2.jpg)
 
 ## Verification Scripts
 
@@ -97,3 +91,8 @@ All controller and agent containers currently run on the same physical host. A s
 
 The local Docker-based Jenkins Remoting setup, Linux load-distribution test, ARM64 build, and documented connectivity tests have been completed. Further remote-machine and security-isolation validation remains subject to review of the task requirements.
 
+---
+
+**Author:** Himanshu Raj  
+**Program:** CodeAlpha DevOps Internship  
+**Project:** Jenkins Remoting
