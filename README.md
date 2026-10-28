@@ -20,8 +20,7 @@ The following diagram illustrates the project architecture and tested setup.
 
 ![Jenkins Remoting Architecture](docs/architecture.png)
 
-
-**Environment note:** The controller and agents in this implementation run as Docker containers on the same physical host. A separate physical machine or cloud VM has not yet been verified.
+The Jenkins controller runs locally in Docker. Linux and ARM64 agents were used for distributed execution tests, and an AWS EC2 Ubuntu VM was connected as a remote Jenkins agent. The EC2 agent completed a successful remote build.
 
 ## Environment
 
@@ -30,7 +29,7 @@ The following diagram illustrates the project architecture and tested setup.
 | Jenkins Controller | Docker container |
 | Linux Agents | Two Linux agent containers |
 | ARM64 Agent | ARM64 container using Java 21 |
-| Networking | Dedicated Docker network |
+| Networking | Dedicated Docker network, plus SSH reverse tunnel to the AWS EC2 agent |
 | Build execution | Jenkins Remoting |
 | Evidence | Screenshots and verification scripts |
 
@@ -41,7 +40,9 @@ The following diagram illustrates the project architecture and tested setup.
 - Load distribution verified: Build #5 ran on `jenkins-agent-2` and Build #6 ran on `jenkins-agent-1`.
 - ARM64 job completed successfully and reported `aarch64`.
 - Environment and agent verification scripts executed.
-- Network connectivity tests performed and screenshots saved.
+- AWS EC2 Ubuntu agent connected through an SSH reverse tunnel; the Jenkins controller endpoint returned HTTP 200 through the tunnel.
+- Captured TCP traffic on EC2 and correlated the observed external destination IP with the local network's public IP.
+- Evidence screenshots saved for agent status, remote build, packet capture, tunnel connectivity, and container security settings.
 
 ## Evidence
 
@@ -80,15 +81,11 @@ Run the scripts in an environment where their required commands and Docker acces
 
 Network connectivity tests were performed from the configured containers. The recorded test showed the Jenkins Remoting port `50000` was reachable, while the tested connection to the controller's other network address on port `8080` was blocked.
 
-These results apply only to the tested source, destination, ports, and network configuration. They do not prove complete node isolation.
-
-All controller and agent containers currently run on the same physical host. A separate physical machine or cloud VM has not been tested. Additional validation may be needed to fully demonstrate the requirement for build distribution across different machines.
+These results apply only to the tested source, destination, ports, and network configuration; they do not prove complete node isolation. The AWS EC2 Ubuntu VM is a separate cloud virtual machine, not a second physical laptop or server. The SSH reverse tunnel and successful remote build demonstrate controller-to-agent connectivity across the local host and AWS VM.
 
 ## Project Status
 
-The local Docker-based Jenkins Remoting setup, Linux load-distribution test, ARM64 build, and documented connectivity tests have been completed. Further remote-machine and security-isolation validation remains subject to review of the task requirements.
-
----
+The local Docker-based Jenkins Remoting setup, Linux load-distribution test, ARM64 build, AWS EC2 remote-agent build, SSH tunnel connectivity check, and TCP packet capture have been completed. Complete network isolation has not been established by these tests.
 
 ---
 
