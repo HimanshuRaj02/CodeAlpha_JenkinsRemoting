@@ -238,6 +238,12 @@ The project demonstrates distributed Jenkins builds across Linux agents, success
 
 The controller and agents were validated through Jenkins builds, connectivity checks, Docker network inspection, and security configuration checks. Supporting screenshots are included in the repository for review.
 
+## 🔗 Project Announcement
+
+I shared this project as part of my **CodeAlpha DevOps Internship**, highlighting the implementation of Jenkins Remoting, distributed builds, Docker networking, container security, and AWS EC2 integration.
+
+📢 **[View LinkedIn Project Post](https://lnkd.in/p/gTWu_Yn9)**
+
 ## Author
 
 **Himanshu Raj**  
